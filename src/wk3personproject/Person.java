@@ -8,10 +8,12 @@ public class Person implements Weighable {
     private String lastName;
     private int age;
     private double weight = 0;
+    private double accChange = 0;
     private int idNumber;
     
     static int personNumber = 0;
     
+    public Person(){};
    
     public Person(String firstName, String lastName){
         this.firstName = firstName;
@@ -72,10 +74,25 @@ public class Person implements Weighable {
     @Override
     public void addWeight(double pounds){
         this.weight += pounds;
+        this.accChange += pounds;
     }
     
     @Override
     public void loseWeight(double pounds){
         this.weight -= pounds;
+        this.accChange -= pounds;
+    }
+    
+    @Override
+    public String toString(){
+        String str;
+        str = "Name: " + firstName
+                + " " + lastName
+                + "\tage: "+ age
+                + "\tID: " + idNumber
+                + "\tWeight: " + weight
+                + "\tnet change: " + accChange;
+        
+        return str;
     }
 }
